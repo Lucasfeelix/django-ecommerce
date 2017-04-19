@@ -25,7 +25,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))  # relativo settings
 SECRET_KEY = 's4r^(%baf__mo@-fv=ql5wug7g_%k8!q_-6$z!k)d9jse8%h(#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -139,3 +139,8 @@ ALLOWED_HOSTS = ['*']
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')  #
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass

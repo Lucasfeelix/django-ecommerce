@@ -22,8 +22,11 @@ class Category(models.Model):
 
     class Meta:  # Meta informações acerca desse modelo
         verbose_name = 'Categoria'
-        verbose_name_plural = 'Categorias'
+        verbose_name_plural = 'Categorias'  # Faz com que carregue no 'Catalog'
         ordering = ['name']
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -37,5 +40,8 @@ class Product(models.Model):
 
     class Meta:
         verbose_name = 'Produto'
-        verbose_name_plural = 'Produtos'
+        verbose_name_plural = 'Produtos'  # Faz com que carregue no 'Catalog'
         ordering = ['name']
+
+    def __str__(self):
+        return self.name

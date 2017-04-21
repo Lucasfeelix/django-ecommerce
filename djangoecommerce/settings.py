@@ -51,6 +51,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddlere'
+
+    """
+    Middleware é um objeto (uma classe), que vai chamar determinados métodos
+    para cada fluxo da requisição.
+    """
 ]
 
 ROOT_URLCONF = 'djangoecommerce.urls'

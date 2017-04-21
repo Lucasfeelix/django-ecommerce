@@ -5,6 +5,7 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^$', views.product_list, name='product_list')
+    url(r'^$', views.product_list, name='product_list'),
     # url(r'^produtos/', views_catalog.product_list, name='product_list'),
+    url(r'^(?P<slug>[\w_-]+)/$', views.category, name='category')
 ]

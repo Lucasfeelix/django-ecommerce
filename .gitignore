@@ -96,3 +96,6 @@ ENV/
 
 # mkdocs documentation
 /site
+
+#Project Examples
+contact-example.html

@@ -1,6 +1,8 @@
 # coding=utf-8
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.conf import settings
 from catalog.models import Category, Product
 from .forms import ContactForm
 
@@ -15,11 +17,27 @@ def index(request):
 
 
 def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-    else:
-        form = ContactForm()
+    sucess = False
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        form.send_mail()
+        sucess = True
     context = {
-        'form': form
+        'form': form,
+        'sucess': sucess,
     }
     return render(request, 'contact.html', context)
+
+    # sucess = False
+    # if request.method == 'POST':
+    #     form = ContactForm(request.POST)
+    #     if form.is_valid():
+    #         form.send_mail()
+    #         sucess = True
+    # else:
+    #     form = ContactForm()
+    # context = {
+    #     'form': form,
+    #     'sucess': sucess,
+    # }
+    # return render(request, 'contact.html', context)

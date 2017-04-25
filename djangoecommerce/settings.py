@@ -140,8 +140,14 @@ ALLOWED_HOSTS = ['*']
 
 # Static files (CSS, Javascript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')  #
+
+# Email
+EMAIL_HOST = ''  # url para servidor SMTP
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
+
 
 try:
     from .local_settings import *

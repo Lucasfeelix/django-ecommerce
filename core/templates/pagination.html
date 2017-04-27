@@ -1,0 +1,10 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="pagination">
+        {% for page in paginator.page_range %}
+          <li><a href="?page={{ page }}"> {{ page }}</a></li>
+        {% endfor %}
+    </ul>
+  </div>
+</div>

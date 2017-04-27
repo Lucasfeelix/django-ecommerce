@@ -9,6 +9,7 @@ class ProductListView(generic.ListView):
     model = Product
     template_name = 'catalog/product_list.html'
     context_object_name = 'products'
+    paginate_by = 3
     # a listagem de produtos dentro do Template terá o nome de 'products'
     # Como estava sendo implementado anteriormente
     # def product_list(request):
@@ -21,6 +22,7 @@ class ProductListView(generic.ListView):
 class CategoryListView(generic.ListView):
     template_name = 'catalog/category.html'
     context_object_name = 'product_list'
+    paginate_by = 3
 
     def get_queryset(self):
         return Product.objects.filter(category__slug=self.kwargs['slug'])

@@ -4,6 +4,7 @@ from django.test import TestCase, Client
 from django.core.urlresolvers import reverse
 from django.core import mail
 
+
 class IndexViewTestCase(TestCase):
     def setUp(self):
         self.client = Client()

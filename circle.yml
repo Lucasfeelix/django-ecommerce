@@ -4,6 +4,6 @@ machine:
 
 test:
   post:
-	- python catalog/tests/test_models.py
-	- python catalog/tests/test_views.py
-	- python core/tests/test_views.py
+    - python catalog/tests/test_models.py
+    - python catalog/tests/test_views.py
+    - python core/tests/test_views.py

@@ -6,9 +6,11 @@ from django.contrib.auth.models import PermissionsMixin
 from django.core import validators
 
 
-class User(AbstractBaseUser, UserManager):
+class User(AbstractBaseUser, PermissionsMixin):
     '''
     Modelo para sobreescrever o admin do Django.
+    Obs: após a criação da classe, apagar atual banco e rodar makemigrations
+    e migrate para ser criado novo modelo com base em seu User personalizado.
     '''
     username = models.CharField('Username / Usuário', max_length=30,
                                 unique=True, validators=[

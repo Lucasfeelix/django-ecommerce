@@ -154,9 +154,13 @@ DEFAULT_FROM_EMAIL = 'admin@djangoecommerce.com'
 LOGIN_URL = 'login'  # url de login/nome url
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_URL = 'logout'
-
 # substituindo o do Django padrão pelo do accounts
 AUTH_USER_MODEL = 'accounts.User'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend',
+)
 
 try:
     from .local_settings import *

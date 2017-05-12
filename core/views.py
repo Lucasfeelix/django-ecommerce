@@ -36,17 +36,6 @@ def contact(request):
     }
     return render(request, 'contact.html', context)
 
-
-class RegisterView(CreateView):
-    form_class = UserCreationForm  # indica qual a classe de formulário usada
-    template_name = 'register.html'
-    model = User
-    success_url = reverse_lazy('index')
-    # faz com que após o cadastro o usuário seja redirecionado para o index
-
-
-register = RegisterView.as_view()
-
 # sucess = False
 # if request.method == 'POST':
 #     form = ContactForm(request.POST)

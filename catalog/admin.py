@@ -11,12 +11,14 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug', 'created_at', 'modified']
     search_fields = ['name', 'slug']  # opções de buscas
     list_filter = ['created_at', 'modified']
+    prepopulated_fields = {'slug': ('name',)}
 
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug', 'category', 'created_at', 'modified']
     search_fields = ['name', 'slug', 'category__name']  # opções de buscas
     list_filter = ['created_at', 'modified']  # filtro lateral
+    prepopulated_fields = {'slug': ('name',)}
 
 
 admin.site.register(Category, CategoryAdmin)

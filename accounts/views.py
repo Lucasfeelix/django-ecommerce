@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, TemplateView
+from django.views.generic import CreateView, TemplateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from accounts.models import User
 from accounts.forms import UserAdminCreationForm
@@ -16,6 +16,8 @@ class IndexView(LoginRequiredMixin, TemplateView):
 
 class RegisterView(CreateView):
     """
+    Classe criada para registro de usuários.
+
     Variáveis:
         - template_name = template associado na chamada.
         - model = modelo de formulário que será criado com base no que foi
@@ -29,5 +31,22 @@ class RegisterView(CreateView):
     success_url = reverse_lazy('index')
 
 
+class UpdateUserView(LoginRequiredMixin, UpdateView):
+    """
+    Classe criada para atualizar os dados do usuário.
+
+    model = modelo a ser alterado, no caso, User;
+    fields = campos a serem alterados
+    """
+    model = User
+    template_name = 'accounts/update_user.html'
+    fields = ['name', 'email']
+    success_url = reverse_lazy('accounts:index')
+
+    def get_object(self):
+        return self.request.user
+
+
 index = IndexView.as_view()
 register = RegisterView.as_view()
+update_user = UpdateUserView.as_view()

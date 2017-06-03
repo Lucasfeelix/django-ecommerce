@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 import dj_database_url
+from django.contrib.messages import constants as messages_constats
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # raiz
@@ -161,6 +162,15 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.ModelBackend',
 )
+
+# messages
+MESSAGE_TAGS = {
+    messages_constats.DEBUG: 'debug',
+    messages_constats.INFO: 'info',
+    messages_constats.SUCCESS: 'success',
+    messages_constats.WARNING: 'warning',
+    messages_constats.ERROR: 'danger',
+}
 
 try:
     from .local_settings import *

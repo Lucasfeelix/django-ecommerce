@@ -8,6 +8,8 @@ from django.views.generic import View, TemplateView, CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from catalog.models import Category, Product
+
+from django.contrib import messages
 from .forms import ContactForm
 
 """
@@ -30,6 +32,8 @@ def contact(request):
     if form.is_valid():
         form.send_mail()
         sucess = True
+    elif request.method == 'POST':
+        messages.error(request, 'Formuário inválido')
     context = {
         'form': form,
         'sucess': sucess,

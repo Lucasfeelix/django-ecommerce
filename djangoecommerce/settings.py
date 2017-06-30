@@ -57,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'checkout.middleware.cart_item_middleware'
 ]
 
 ROOT_URLCONF = 'djangoecommerce.urls'

@@ -11,13 +11,13 @@ class CarItemManager(models.Manager):
             cart_item.save()
         else:
             created = True
-            cart_item = CarItem.objects.create(
+            cart_item = CartItem.objects.create(
                 cart_key=cart_key, product=product, price=product.price
             )
         return cart_item, created
 
 
-class CarItem(models.Model):
+class CartItem(models.Model):
     cart_key = models.CharField('Chave do Carrinho', max_length=40,
                                 db_index=True)
     product = models.ForeignKey(Product, verbose_name='Produto')
@@ -33,3 +33,12 @@ class CarItem(models.Model):
 
     def __str__(self):
         return '{} [{}]'.format(self.product, self.quantity)
+
+
+def post_save_cart_item(instance, **kwargs):
+    if instance.quantity < 1:
+        instance.delete()
+
+
+models.signals.post_save.connect(post_save_cart_item, sender=CartItem,
+                                 dispatch_uid='post_save_cart_item')
